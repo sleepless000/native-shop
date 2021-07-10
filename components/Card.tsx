@@ -4,20 +4,23 @@ import { View, StyleSheet, Image, useWindowDimensions } from "react-native";
 import AppText from "./AppText";
 import colors from "../constants/Colors";
 
-const Card: React.FC<{ title: string, subTitle: string, image: any }> =
-  ({ title, subTitle, image }) => {
-    const windowWidth = useWindowDimensions().width;
+const Card: React.FC<{ title: string; subTitle: string; image: any }> = ({
+  title,
+  subTitle,
+  image,
+}) => {
+  const windowWidth = useWindowDimensions().width;
 
-    return (
-      <View style={[styles.card, { width: windowWidth - 40 }]}>
-        <Image style={styles.image} source={image} />
-        <View style={styles.detailsContainer}>
-          <AppText style={styles.title}>{title}</AppText>
-          <AppText style={styles.subTitle}>{subTitle}</AppText>
-        </View>
+  return (
+    <View style={[styles.card, { width: windowWidth - 40 }]}>
+      <Image style={styles.image} source={image} />
+      <View style={styles.detailsContainer}>
+        <AppText style={styles.title}>{title}</AppText>
+        <AppText style={styles.subTitle}>{subTitle}</AppText>
       </View>
-    );
-}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   card: {
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
   image: {
     width: 200,
     height: 200,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   subTitle: {
     color: colors.app.secondary,
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 7,
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
 });
 

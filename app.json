@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "RactNativeApp",
-    "slug": "RactNativeApp",
+    "name": "shop-react-native-pp",
+    "slug": "my-shop-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -29,6 +29,8 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/sleepless000/native-shop"
   }
 }
