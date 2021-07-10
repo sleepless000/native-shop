@@ -4,16 +4,19 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
 import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
+import Details from "../components/Details";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
+import {
+  BottomTabParamList,
+  TabOneParamList,
+  TabTwoParamList,
+  List,
+} from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
   return (
     <BottomTab.Navigator
       initialRouteName="TabOne"
@@ -64,7 +67,7 @@ function TabOneNavigator() {
         headerShown: false,
       }}
     >
-      <TabOneStack.Screen name="TabOneScreen" component={TabOneScreen} />
+      <TabOneStack.Screen name="TabOneScreen" component={ListStackNavigator} />
     </TabOneStack.Navigator>
   );
 }
@@ -80,5 +83,29 @@ function TabTwoNavigator() {
     >
       <TabTwoStack.Screen name="TabTwoScreen" component={TabTwoScreen} />
     </TabTwoStack.Navigator>
+  );
+}
+
+const ListStack = createStackNavigator<List>();
+
+function ListStackNavigator() {
+  return (
+    <ListStack.Navigator>
+      <ListStack.Screen
+        name="List"
+        component={TabOneScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <ListStack.Screen
+        name="Details"
+        component={Details}
+        options={{
+          title: "",
+          headerTintColor: Colors.app.primary,
+        }}
+      />
+    </ListStack.Navigator>
   );
 }

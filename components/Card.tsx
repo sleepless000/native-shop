@@ -1,24 +1,33 @@
 import React from "react";
-import { View, StyleSheet, Image, useWindowDimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  useWindowDimensions,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import AppText from "./AppText";
 import colors from "../constants/Colors";
 
-const Card: React.FC<{ title: string; subTitle: string; image: any }> = ({
-  title,
-  subTitle,
-  image,
-}) => {
+const Card: React.FC<{
+  title: string;
+  subTitle: string;
+  image: any;
+  onPress: () => void;
+}> = ({ title, subTitle, image, onPress }) => {
   const windowWidth = useWindowDimensions().width;
 
   return (
-    <View style={[styles.card, { width: windowWidth - 40 }]}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={[styles.card, { width: windowWidth - 40 }]}>
+        <Image style={styles.image} source={image} />
+        <View style={styles.detailsContainer}>
+          <AppText style={styles.title}>{title}</AppText>
+          <AppText style={styles.subTitle}>{subTitle}</AppText>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
