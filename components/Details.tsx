@@ -1,31 +1,44 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, ImageSourcePropType } from "react-native";
+import { useRoute } from "@react-navigation/native";
 
 import colors from "../constants/colors";
 import Text from "../components/AppText";
 import AppButton from "../components/AppButton";
 import { useCartContext } from "../hooks/useCart";
 
-const ListingDetailsScreen: React.FC<{ route: any }> = ({ route }) => {
-  const listing = route.params;
+interface IParams {
+  key: string;
+  name: string;
+  params: {
+    id: string;
+    title: string;
+    image: ImageSourcePropType;
+    description: string;
+    price: string;
+  };
+}
+
+const Details: React.FC = () => {
+  const { params } = useRoute<IParams>();
   const { addToCart, data } = useCartContext();
-  const currentItem = data.find((item) => item.id === listing.id);
+  const currentItem = data.find((item) => item.id === params.id);
 
   return (
     <>
       <View style={{ backgroundColor: "white" }}>
-        <Image style={styles.image} source={listing.image} />
+        <Image style={styles.image} source={params.image} />
       </View>
       <View style={styles.detailsContainer}>
-        <Text style={styles.title}>{listing.title}</Text>
-        <Text style={styles.desc}>{listing.description}</Text>
+        <Text style={styles.title}>{params.title}</Text>
+        <Text style={styles.desc}>{params.description}</Text>
 
         <Text style={styles.price}>
-          £ {parseFloat(listing.price).toFixed(2)}
+          £ {parseFloat(params.price).toFixed(2)}
         </Text>
         {currentItem?.quantity ? (
           <Text style={styles.secondTitle}>
-            Currently in cart {currentItem?.quantity} {listing.title}
+            Currently in cart {currentItem?.quantity} {params.title}
           </Text>
         ) : (
           <View style={{ height: 25 }}></View>
@@ -33,7 +46,7 @@ const ListingDetailsScreen: React.FC<{ route: any }> = ({ route }) => {
       </View>
       <View style={styles.button}>
         <AppButton
-          onPress={() => addToCart({ id: listing.id })}
+          onPress={() => addToCart({ id: params.id })}
           title="add to cart"
         />
       </View>
@@ -77,4 +90,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListingDetailsScreen;
+export default Details;

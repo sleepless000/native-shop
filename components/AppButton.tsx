@@ -6,15 +6,7 @@ import colors from "../constants/colors";
 interface IProps {
   title: string;
   onPress: () => void;
-  color?: keyof {
-    primary: string;
-    secondary: string;
-    black: string;
-    white: string;
-    medium: string;
-    light: string;
-    danger: string;
-  };
+  color?: keyof typeof colors.app;
 }
 
 const AppButton: React.FC<IProps> = ({ title, onPress, color = "primary" }) => {

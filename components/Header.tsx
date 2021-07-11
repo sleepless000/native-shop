@@ -1,14 +1,23 @@
 import * as React from "react";
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  FlatList,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
 
 import colors from "../constants/colors";
 import { useCartContext } from "../hooks/useCart";
 
-const Header: React.FC<{
-  flatListRef: any;
-  navigation: any;
-}> = ({ flatListRef, navigation }) => {
+interface IProps {
+  flatListRef: React.MutableRefObject<FlatList<any>>;
+}
+
+const Header: React.FC<IProps> = ({ flatListRef }) => {
+  const navigation = useNavigation();
   const { subtotal } = useCartContext();
   return (
     <View style={styles.container}>

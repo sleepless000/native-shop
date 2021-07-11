@@ -10,12 +10,14 @@ import {
 import AppText from "./AppText";
 import colors from "../constants/colors";
 
-const Card: React.FC<{
+interface IProps {
   title: string;
   subTitle: string;
   image: any;
   onPress: () => void;
-}> = ({ title, subTitle, image, onPress }) => {
+}
+
+const Card: React.FC<IProps> = ({ title, subTitle, image, onPress }) => {
   const windowWidth = useWindowDimensions().width;
 
   return (

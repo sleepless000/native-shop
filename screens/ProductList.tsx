@@ -1,21 +1,19 @@
 import * as React from "react";
 import { StyleSheet, FlatList, SafeAreaView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import colors from "../constants/colors";
 import products from "../constants/products";
 import Card from "../components/Card";
 import Header from "../components/Header";
 
-export default function ProductList({
-  navigation,
-}: {
-  navigation: { navigate: (route: string, param: any) => void };
-}) {
+const ProductList: React.FC = () => {
+  const navigation = useNavigation();
   const flatListRef = React.useRef<any>();
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header flatListRef={flatListRef} navigation={navigation} />
+      <Header flatListRef={flatListRef} />
       <FlatList
         ref={flatListRef}
         style={styles.list}
@@ -32,7 +30,7 @@ export default function ProductList({
       />
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -62,3 +60,5 @@ const styles = StyleSheet.create({
   },
   list: { paddingHorizontal: 20, height: "100%" },
 });
+
+export default ProductList;

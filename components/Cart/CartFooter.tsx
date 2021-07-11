@@ -5,11 +5,22 @@ import colors from "../../constants/colors";
 import { useCartContext } from "../../hooks/useCart";
 
 const CartFooter: React.FC = () => {
-  const { subtotal, checkout } = useCartContext();
+  const { subtotal, checkout, clearCart } = useCartContext();
 
   return subtotal > 0 ? (
     <>
       <View style={styles.separator} />
+
+      <View style={[styles.container]}>
+        <View style={styles.total} />
+        <View style={styles.button}>
+          <Button
+            title="CLEAR CART"
+            onPress={clearCart}
+            color={colors.app.secondary}
+          />
+        </View>
+      </View>
 
       <View style={styles.container}>
         <View style={styles.total}>
@@ -39,7 +50,7 @@ const styles = StyleSheet.create({
   },
   container: {
     height: 60,
-    margin: 20,
+    marginHorizontal: 20,
     flexDirection: "row",
     flex: 1,
     padding: 2,

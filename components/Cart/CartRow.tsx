@@ -4,10 +4,12 @@ import { AntDesign } from "@expo/vector-icons";
 
 import colors from "../../constants/colors";
 
-const CartRow: React.FC<{
+interface IProps {
   item: any;
-  addToCart: any;
-}> = ({ item, addToCart }) => (
+  addToCart: ({ id, add }: { id: string; add?: boolean }) => void;
+}
+
+const CartRow: React.FC<IProps> = ({ item, addToCart }) => (
   <View style={styles.container}>
     <View style={styles.title}>
       <Text style={{ color: colors.app.black }}>{item.title}</Text>

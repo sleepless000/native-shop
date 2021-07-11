@@ -6,33 +6,13 @@ import colors from "../../constants/colors";
 const CartHeader: React.FC = () => {
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          flex: 4,
-          alignItems: "flex-start",
-          justifyContent: "center",
-          paddingLeft: 20,
-        }}
-      >
+      <View style={styles.name}>
         <Text style={styles.headerText}>Name</Text>
       </View>
-      <View
-        style={{
-          flex: 2,
-          alignItems: "flex-end",
-          justifyContent: "center",
-          paddingRight: 10,
-        }}
-      >
+      <View style={styles.total}>
         <Text style={styles.headerText}>Total</Text>
       </View>
-      <View
-        style={{
-          flex: 3,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <View style={styles.quantity}>
         <Text style={styles.headerText}>Quantity</Text>
       </View>
     </View>
@@ -49,6 +29,23 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   headerText: { color: colors.app.white, fontSize: 16 },
+  name: {
+    flex: 4,
+    alignItems: "flex-start",
+    justifyContent: "center",
+    paddingLeft: 20,
+  },
+  total: {
+    flex: 2,
+    alignItems: "flex-end",
+    justifyContent: "center",
+    paddingRight: 10,
+  },
+  quantity: {
+    flex: 3,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 export default CartHeader;
