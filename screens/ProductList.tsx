@@ -1,5 +1,11 @@
 import * as React from "react";
-import { StyleSheet, FlatList, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  FlatList,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import colors from "../constants/colors";
@@ -13,7 +19,7 @@ const ProductList: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header flatListRef={flatListRef} />
+      <Header />
       <FlatList
         ref={flatListRef}
         style={styles.list}
@@ -27,6 +33,24 @@ const ProductList: React.FC = () => {
           />
         )}
         keyExtractor={(item) => item.id}
+        ListHeaderComponent={() => (
+          <Text style={styles.listHeader}>Space Jelly Shop</Text>
+        )}
+        ListFooterComponent={() => (
+          <TouchableOpacity>
+            <Text
+              style={styles.listFooter}
+              onPress={() =>
+                flatListRef.current.scrollToOffset({
+                  animated: true,
+                  offset: 0,
+                })
+              }
+            >
+              Scroll to top
+            </Text>
+          </TouchableOpacity>
+        )}
       />
     </SafeAreaView>
   );
@@ -59,6 +83,19 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   list: { paddingHorizontal: 20, height: "100%" },
+  listHeader: {
+    fontSize: 40,
+    fontWeight: "900",
+    paddingTop: 10,
+    paddingBottom: 30,
+    textAlign: "center",
+  },
+  listFooter: {
+    paddingBottom: 20,
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
 });
 
 export default ProductList;

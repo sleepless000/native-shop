@@ -2,9 +2,12 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import colors from "../../constants/colors";
+import { useCartContext } from "../../hooks/useCart";
 
 const CartHeader: React.FC = () => {
-  return (
+  const { subtotal } = useCartContext();
+
+  return subtotal > 0 ? (
     <View style={styles.container}>
       <View style={styles.name}>
         <Text style={styles.headerText}>Name</Text>
@@ -16,7 +19,7 @@ const CartHeader: React.FC = () => {
         <Text style={styles.headerText}>Quantity</Text>
       </View>
     </View>
-  );
+  ) : null;
 };
 
 const styles = StyleSheet.create({

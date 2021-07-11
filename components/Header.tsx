@@ -1,34 +1,19 @@
 import * as React from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  View,
-  FlatList,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
 
 import colors from "../constants/colors";
 import { useCartContext } from "../hooks/useCart";
 
-interface IProps {
-  flatListRef: React.MutableRefObject<FlatList<any>>;
-}
-
-const Header: React.FC<IProps> = ({ flatListRef }) => {
+const Header: React.FC = () => {
   const navigation = useNavigation();
   const { subtotal } = useCartContext();
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.shopName}
-        onPress={() =>
-          flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
-        }
-      >
+      <View style={styles.shopName}>
         <Text style={styles.text}>Space Jelly Shop</Text>
-      </TouchableOpacity>
+      </View>
       <TouchableOpacity
         style={styles.cart}
         onPress={() =>

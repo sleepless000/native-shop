@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 import colors from "../../constants/colors";
@@ -18,19 +18,23 @@ const CartRow: React.FC<IProps> = ({ item, addToCart }) => (
       <Text>£ {item.total}</Text>
     </View>
     <View style={styles.quantity}>
-      <AntDesign
-        name="minuscircleo"
-        size={30}
-        color={colors.app.black}
-        onPress={() => addToCart({ id: item.id, add: false })}
-      />
+      <TouchableOpacity>
+        <AntDesign
+          name="minuscircleo"
+          size={30}
+          color={colors.app.black}
+          onPress={() => addToCart({ id: item.id, add: false })}
+        />
+      </TouchableOpacity>
       <Text style={styles.qtyText}>{item.quantity.toString()}</Text>
-      <AntDesign
-        name="pluscircleo"
-        size={30}
-        color={colors.app.black}
-        onPress={() => addToCart({ id: item.id })}
-      />
+      <TouchableOpacity>
+        <AntDesign
+          name="pluscircleo"
+          size={30}
+          color={colors.app.black}
+          onPress={() => addToCart({ id: item.id })}
+        />
+      </TouchableOpacity>
     </View>
   </View>
 );
