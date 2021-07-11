@@ -25,7 +25,7 @@ export default [
     },
     {
       id: "price_abcd0004",
-      title: "Space Jelly Tshirt",
+      title: "Galaxy Jelly Tshirt",
       description:
         "Bring Cosmo the space Jellyfish to your wardrobe with this high quality tshirt.",
       image: require("../assets/images/spacejelly-tshirt.jpg"),
@@ -33,7 +33,7 @@ export default [
     },
     {
       id: "price_abcd0005",
-      title: "Space Jelly Stickers",
+      title: "Galaxy Jelly Stickers",
       description:
         "Add some flare to your laptop with a sticker of Cosmo the Space Jellyfish.",
       image: require("../assets/images/spacejelly-stickers.jpg"),
@@ -41,7 +41,7 @@ export default [
     },
     {
       id: "price_abcd0006",
-      title: "Space Jelly Combo",
+      title: "Galaxy Jelly Combo",
       description:
         "Show your love for Cosmo with a tshirt and sticker combo pack!",
       image: require("../assets/images/spacejelly-combo.jpg"),

@@ -1,12 +1,12 @@
-import { Entypo } from "@expo/vector-icons";
+import * as React from "react";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as React from "react";
 
-import Colors from "../constants/Colors";
+import colors from "../constants/colors";
 import Details from "../components/Details";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import ProductList from "../screens/ProductList";
+import CartScreen from "../screens/CartScreen";
 import {
   BottomTabParamList,
   TabOneParamList,
@@ -20,7 +20,7 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors.app.primary }}
+      tabBarOptions={{ activeTintColor: colors.app.primary }}
     >
       <BottomTab.Screen
         name="TabOne"
@@ -43,10 +43,10 @@ export default function BottomTabNavigator() {
         options={{
           title: "",
           tabBarIcon: ({ color }) => (
-            <Entypo
-              name="shopping-bag"
+            <AntDesign
+              name="shoppingcart"
+              size={40}
               color={color}
-              size={35}
               style={{ position: "absolute", top: 5 }}
             />
           ),
@@ -67,7 +67,7 @@ function TabOneNavigator() {
         headerShown: false,
       }}
     >
-      <TabOneStack.Screen name="TabOneScreen" component={ListStackNavigator} />
+      <TabOneStack.Screen name="ProductList" component={ListStackNavigator} />
     </TabOneStack.Navigator>
   );
 }
@@ -81,7 +81,7 @@ function TabTwoNavigator() {
         headerShown: false,
       }}
     >
-      <TabTwoStack.Screen name="TabTwoScreen" component={TabTwoScreen} />
+      <TabTwoStack.Screen name="CartScreen" component={CartScreen} />
     </TabTwoStack.Navigator>
   );
 }
@@ -93,7 +93,7 @@ function ListStackNavigator() {
     <ListStack.Navigator>
       <ListStack.Screen
         name="List"
-        component={TabOneScreen}
+        component={ProductList}
         options={{
           headerShown: false,
         }}
@@ -103,7 +103,7 @@ function ListStackNavigator() {
         component={Details}
         options={{
           title: "",
-          headerTintColor: Colors.app.primary,
+          headerTintColor: colors.app.primary,
         }}
       />
     </ListStack.Navigator>

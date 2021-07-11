@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import AppText from "./AppText";
-import colors from "../constants/Colors";
+import colors from "../constants/colors";
 
 const Card: React.FC<{
   title: string;
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 15,
     backgroundColor: colors.app.white,
-    marginBottom: 30,
+    marginBottom: 20,
     overflow: "hidden",
   },
   detailsContainer: {

@@ -14,11 +14,11 @@ export type BottomTabParamList = {
 };
 
 export type TabOneParamList = {
-  TabOneScreen: undefined;
+  ProductList: undefined;
 };
 
 export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+  CartScreen: undefined;
 };
 
 export type List = {

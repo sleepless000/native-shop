@@ -1,34 +1,53 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 
-import colors from "../constants/Colors";
+import colors from "../constants/colors";
 import Text from "../components/AppText";
-import Button from "../components/Button";
+import AppButton from "../components/AppButton";
+import { useCartContext } from "../hooks/useCart";
 
-function ListingDetailsScreen({ route }: { route: any }) {
+const ListingDetailsScreen: React.FC<{ route: any }> = ({ route }) => {
   const listing = route.params;
+  const { addToCart, data } = useCartContext();
+  const currentItem = data.find((item) => item.id === listing.id);
 
   return (
-    <View>
-      <Image style={styles.image} source={listing.image} />
+    <>
+      <View style={{ backgroundColor: "white" }}>
+        <Image style={styles.image} source={listing.image} />
+      </View>
       <View style={styles.detailsContainer}>
         <Text style={styles.title}>{listing.title}</Text>
-        <Text style={styles.price}>£ {listing.price}</Text>
+        <Text style={styles.desc}>{listing.description}</Text>
+
+        <Text style={styles.price}>
+          £ {parseFloat(listing.price).toFixed(2)}
+        </Text>
+        {currentItem?.quantity ? (
+          <Text style={styles.secondTitle}>
+            Currently in cart {currentItem?.quantity} {listing.title}
+          </Text>
+        ) : (
+          <View style={{ height: 25 }}></View>
+        )}
       </View>
       <View style={styles.button}>
-        <Button onPress={() => {}} title="add to cart" />
+        <AppButton
+          onPress={() => addToCart({ id: listing.id })}
+          title="add to cart"
+        />
       </View>
-    </View>
+    </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   detailsContainer: {
     padding: 20,
   },
   image: {
-    width: 400,
-    height: 400,
+    width: 250,
+    height: 250,
     alignSelf: "center",
   },
   price: {
@@ -40,6 +59,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "500",
+    paddingBottom: 10,
+  },
+  desc: {
+    fontSize: 16,
+    fontWeight: "300",
+    paddingBottom: 10,
+  },
+  secondTitle: {
+    color: colors.app.grey,
   },
   button: {
     marginHorizontal: 20,

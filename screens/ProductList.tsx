@@ -1,36 +1,36 @@
 import * as React from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, SafeAreaView } from "react-native";
 
-import { Text, View } from "../components/Themed";
-import colors from "../constants/Colors";
+import colors from "../constants/colors";
 import products from "../constants/products";
 import Card from "../components/Card";
+import Header from "../components/Header";
 
-export default function TabOneScreen({
+export default function ProductList({
   navigation,
 }: {
   navigation: { navigate: (route: string, param: any) => void };
 }) {
+  const flatListRef = React.useRef<any>();
+
   return (
-    <View style={styles.container}>
-      <View style={styles.title}>
-        <Text style={styles.text}>Space Jelly</Text>
-        <Text style={styles.text}>Shop</Text>
-      </View>
+    <SafeAreaView style={styles.container}>
+      <Header flatListRef={flatListRef} navigation={navigation} />
       <FlatList
+        ref={flatListRef}
         style={styles.list}
         data={products}
         renderItem={({ item }) => (
           <Card
             onPress={() => navigation.navigate("Details", item)}
             image={item.image}
-            title={`£ ${item.price}`}
+            title={`£ ${parseFloat(`${item.price}`).toFixed(2)}`}
             subTitle={item.title}
           />
         )}
         keyExtractor={(item) => item.id}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.app.light,
   },
   title: {
-    paddingTop: 50,
+    paddingTop: 40,
     paddingBottom: 20,
     width: "100%",
     backgroundColor: colors.app.light,
@@ -52,6 +52,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: colors.app.primary,
     alignSelf: "center",
+  },
+  cart: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    paddingRight: 20,
+    backgroundColor: colors.app.light,
+    paddingVertical: 10,
   },
   list: { paddingHorizontal: 20, height: "100%" },
 });

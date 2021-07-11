@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-import colors from "../constants/Colors";
+import colors from "../constants/colors";
 
 interface IProps {
   title: string;
