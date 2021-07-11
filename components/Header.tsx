@@ -31,7 +31,9 @@ const Header: React.FC<IProps> = ({ flatListRef }) => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.cart}
-        onPress={() => navigation.navigate("TabTwo", { screen: "CartScreen" })}
+        onPress={() =>
+          navigation.navigate("CartScreen", { screen: "CartScreen" })
+        }
       >
         <Entypo name="shopping-bag" color={colors.app.black} size={24} />
         <Text>{"  "}</Text>

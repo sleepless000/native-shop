@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   noItems: {
     fontSize: 35,
     textAlign: "center",
-    paddingTop: 40,
+    paddingTop: 200,
   },
 });
 

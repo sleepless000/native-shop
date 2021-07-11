@@ -8,9 +8,9 @@ export type RootStackParamList = {
   NotFound: undefined;
 };
 
-export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+export type StackParamList = {
+  ProductList: undefined;
+  CartScreen: undefined;
 };
 
 export type TabOneParamList = {

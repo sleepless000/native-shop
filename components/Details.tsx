@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image, StyleSheet, ImageSourcePropType } from "react-native";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 
 import colors from "../constants/colors";
 import Text from "../components/AppText";
@@ -20,6 +20,7 @@ interface IParams {
 }
 
 const Details: React.FC = () => {
+  const navigation = useNavigation();
   const { params } = useRoute<IParams>();
   const { addToCart, data } = useCartContext();
   const currentItem = data.find((item) => item.id === params.id);
@@ -50,6 +51,15 @@ const Details: React.FC = () => {
           title="add to cart"
         />
       </View>
+      <View style={styles.button}>
+        <AppButton
+          onPress={() =>
+            navigation.navigate("CartScreen", { screen: "CartScreen" })
+          }
+          title="check out"
+          color="black"
+        />
+      </View>
     </>
   );
 };
@@ -77,7 +87,6 @@ const styles = StyleSheet.create({
   desc: {
     fontSize: 16,
     fontWeight: "300",
-    paddingBottom: 10,
   },
   secondTitle: {
     color: colors.app.grey,

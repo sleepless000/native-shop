@@ -13,7 +13,7 @@ import * as React from "react";
 import { ColorSchemeName } from "react-native";
 
 import { RootStackParamList } from "../types";
-import BottomTabNavigator from "./BottomTabNavigator";
+import BottomTabNavigator from "./StackNavigation";
 import LinkingConfiguration from "./LinkingConfiguration";
 
 export default function Navigation({
