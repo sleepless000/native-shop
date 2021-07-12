@@ -61,10 +61,12 @@ Expo docs -> https://docs.expo.io/get-started/errors/
 
 
 ### IOS Screens
-![b1a](https://user-images.githubusercontent.com/20169016/125340793-ce1ca180-e34a-11eb-9f1e-c0da678834f7.png)
-![b2a](https://user-images.githubusercontent.com/20169016/125340799-cf4dce80-e34a-11eb-8134-936d63c9310e.png)
-![b3a](https://user-images.githubusercontent.com/20169016/125340795-ceb53800-e34a-11eb-822f-433b103ea347.png)
-![b4a](https://user-images.githubusercontent.com/20169016/125340797-cf4dce80-e34a-11eb-9e70-b0a22a006123.png)
+<p float="left">
+  <img width="155" alt="Screenshot 2021-07-12 at 19 36 48" src="https://user-images.githubusercontent.com/20169016/125340793-ce1ca180-e34a-11eb-9f1e-c0da678834f7.png">
+  <img width="155" alt="Screenshot 2021-07-12 at 19 37 42" src="https://user-images.githubusercontent.com/20169016/125340799-cf4dce80-e34a-11eb-8134-936d63c9310e.png">
+  <img width="155" alt="Screenshot 2021-07-12 at 19 38 08" src="https://user-images.githubusercontent.com/20169016/125340795-ceb53800-e34a-11eb-822f-433b103ea347.png">
+  <img width="155" alt="Screenshot 2021-07-12 at 19 38 34" src="https://user-images.githubusercontent.com/20169016/125340797-cf4dce80-e34a-11eb-9e70-b0a22a006123.png">
+</p>
 
 ### Android Screens
 ![a1a](https://user-images.githubusercontent.com/20169016/125314484-21342b80-e32e-11eb-9933-529f5a1e1ddc.png)
