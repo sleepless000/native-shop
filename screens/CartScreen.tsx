@@ -17,8 +17,8 @@ const CartScreen = () => {
           ) : null
         }
         keyExtractor={(item) => item.id}
-        ListHeaderComponent={() => <Cart.CartHeader />}
-        ListFooterComponent={() => <Cart.CartFooter />}
+        ListHeaderComponent={Cart.CartHeader}
+        ListFooterComponent={Cart.CartFooter}
       />
     </Cart.CartContainer>
   );

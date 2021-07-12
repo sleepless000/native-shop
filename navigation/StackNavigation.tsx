@@ -1,11 +1,14 @@
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Platform } from "react-native";
 
 import colors from "../constants/colors";
-import Details from "../components/Details";
-import ProductList from "../screens/ProductList";
+import DetailsScreen from "../screens/DetailsScreen";
+import ProductListScreen from "../screens/ProductListScreen";
 import CartScreen from "../screens/CartScreen";
 import { StackParamList, List } from "../types";
+
+const isAndroid = Platform.OS === "android";
 
 const Stack = createStackNavigator<StackParamList>();
 
@@ -26,6 +29,7 @@ export default function StackNavigator() {
         options={{
           title: "",
           headerTintColor: colors.app.primary,
+          ...(isAndroid && { safeAreaInsets: { top: 25 } }),
         }}
       />
     </Stack.Navigator>
@@ -39,17 +43,18 @@ function ProductListNavigator() {
     <ListStack.Navigator>
       <ListStack.Screen
         name="List"
-        component={ProductList}
+        component={ProductListScreen}
         options={{
           headerShown: false,
         }}
       />
       <ListStack.Screen
         name="Details"
-        component={Details}
+        component={DetailsScreen}
         options={{
           title: "",
           headerTintColor: colors.app.primary,
+          ...(isAndroid && { safeAreaInsets: { top: 25 } }),
         }}
       />
     </ListStack.Navigator>

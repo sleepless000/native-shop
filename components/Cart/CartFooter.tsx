@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   total: {
     flex: 3,
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center",
   },
   button: {

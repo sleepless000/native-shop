@@ -84,11 +84,13 @@ const styles = StyleSheet.create({
   },
   list: { paddingHorizontal: 20, height: "100%" },
   listHeader: {
-    fontSize: 40,
-    fontWeight: "900",
-    paddingTop: 10,
+    fontSize: 60,
+    fontWeight: "bold",
     paddingBottom: 30,
     textAlign: "center",
+    textShadowColor: "rgba(0, 0, 0, 0.75)",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
   },
   listFooter: {
     paddingBottom: 20,
