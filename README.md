@@ -20,9 +20,9 @@ Official React Native docs -> https://reactnative.dev/docs/getting-started
 
 (recommended) On IOS or Android install Expo Go from app store.
 
-(optional) If you want to render the app during development in OSX or Windows, please install Simulators / Emulators.
+(optional) If you want to render the app during development in macOS or Windows, please install Simulators / Emulators.
 
-IOS Simulator (OSX only) -> https://docs.expo.io/workflow/ios-simulator/
+IOS Simulator (macOS only) -> https://docs.expo.io/workflow/ios-simulator/
 
 Android Studio -> https://docs.expo.io/workflow/android-studio-emulator/
 
@@ -60,7 +60,13 @@ Dev tools -> https://www.npmjs.com/package/react-devtools
 Expo docs -> https://docs.expo.io/get-started/errors/
 
 
-### Android screens
+### IOS Screens
+![b1a](https://user-images.githubusercontent.com/20169016/125340793-ce1ca180-e34a-11eb-9f1e-c0da678834f7.png)
+![b2a](https://user-images.githubusercontent.com/20169016/125340799-cf4dce80-e34a-11eb-8134-936d63c9310e.png)
+![b3a](https://user-images.githubusercontent.com/20169016/125340795-ceb53800-e34a-11eb-822f-433b103ea347.png)
+![b4a](https://user-images.githubusercontent.com/20169016/125340797-cf4dce80-e34a-11eb-9e70-b0a22a006123.png)
+
+### Android Screens
 ![a1a](https://user-images.githubusercontent.com/20169016/125314484-21342b80-e32e-11eb-9933-529f5a1e1ddc.png)
 ![a4a](https://user-images.githubusercontent.com/20169016/125314488-21ccc200-e32e-11eb-8144-6d5990bc8c9c.png)
 ![a2a](https://user-images.githubusercontent.com/20169016/125314485-21342b80-e32e-11eb-95fd-559ceb1dfb22.png)
