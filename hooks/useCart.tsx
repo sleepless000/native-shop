@@ -1,4 +1,6 @@
-import React, { useState, createContext, useContext, useMemo, FC } from "react";
+import React, {
+  useState, createContext, useContext, useMemo, FC, useCallback,
+} from 'react';
 
 import products from "../constants/products";
 
@@ -36,9 +38,8 @@ const CartContextProvider: FC = ({ children }) => {
   });
 
   const subtotal = cartItems.reduce(
-    (accumulator, { pricePerUnit, quantity }) =>
-      accumulator + pricePerUnit * quantity,
-    0
+    (accumulator, { pricePerUnit, quantity }) => accumulator + pricePerUnit * quantity,
+    0,
   );
 
   const clearCart = () => updateCart({ products: {} });
@@ -56,46 +57,44 @@ const CartContextProvider: FC = ({ children }) => {
     };
   });
 
-  const quantity = cartItems.reduce((accumulator, { quantity }) => {
-    return accumulator + quantity;
-  }, 0);
+  const quantity = cartItems.reduce((accumulator, { quantity: qty }) => accumulator + qty, 0);
 
   const addToCart = ({ id, add = true }: { id: string; add?: boolean }) => {
-    updateCart((prev) => {
-      let cart = { ...prev };
+    updateCart((prevCart) => {
+      const newCart = { ...prevCart };
 
-      if (cart.products[id] && add === true) {
-        cart.products[id].quantity = cart.products[id].quantity + 1;
-      } else if (cart.products[id] && add === false) {
-        if (cart.products[id].quantity === 0) return cart;
-        cart.products[id].quantity = cart.products[id].quantity - 1;
+      if (newCart.products[id] && add === true) {
+        newCart.products[id].quantity += 1;
+      } else if (newCart.products[id] && add === false) {
+        if (newCart.products[id].quantity === 0) return newCart;
+
+        newCart.products[id].quantity -= 1;
       } else {
-        cart.products[id] = {
+        newCart.products[id] = {
           id,
           quantity: 1,
         };
       }
 
-      return cart;
+      return newCart;
     });
   };
 
-  const checkout = () => {
+  const checkout = useCallback(() => {
+    // eslint-disable-next-line no-alert
     alert(
       cartItems
-        .filter(({ quantity }) => quantity > 0)
-        .map(({ id, quantity }) => {
-          return JSON.stringify(
-            {
-              price: id,
-              quantity,
-            },
-            null,
-            2
-          );
-        })
+        .filter(({ quantity: qty }) => qty > 0)
+        .map(({ id, qty }) => JSON.stringify(
+          {
+            price: id,
+            quantity: qty,
+          },
+          null,
+          2,
+        )),
     );
-  };
+  }, [cartItems]);
 
   const value = useMemo(
     () => ({
@@ -106,10 +105,10 @@ const CartContextProvider: FC = ({ children }) => {
       addToCart,
       clearCart,
       checkout,
-    }),
-    [cart]
+    }), [cartItems, checkout, data, quantity, subtotal],
   );
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 
 export { CartContextProvider, useCartContext };
+
