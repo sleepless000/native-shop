@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
 
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: colors.app.light,
     paddingVertical: 20,
+    paddingTop: Platform.OS === 'android' ? 35 : 20,
   },
   cart: {
     flexDirection: "row",
